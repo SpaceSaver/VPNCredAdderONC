@@ -25,6 +25,9 @@ onload = () => {
             const blob = new Blob([JSON.stringify(jsondata)], {type: "application/x-onc"});
             let namearray = file.name.split(".");
             namearray.splice(namearray.length - 1, 0, "withcreds");
+            if (namearray[namearray.length - 1] != "onc") {
+                namearray.push("onc");
+            }
             const name = namearray.join(".");
             downloadlink.setAttribute("download", name);
             downloadlink.href = URL.createObjectURL(blob);
